@@ -1,0 +1,10 @@
+[Unit]
+Description=Load additional kernel modules
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/local/sbin/insert_modules.sh
+
+[Install]
+WantedBy=default.target
