@@ -28,12 +28,12 @@ How did I overcome at least part of those issues (for reference, I use Luckfox P
    1. check if the ethernet is called eth0 or that fancy "blbrbrbdbs43765734"-whatever. Easiest way is just by running `ifconfig`. In my case it was just eth0.
    2. `sudo nano /etc/network/interfaces.d/eth0.conf`
    3. put there:
-```
-auto eth0
-iface eth0 inet static
+      ```
+      auto eth0
+      iface eth0 inet static
         address aaa.bbb.ccc.ddd/24
         gateway eee.fff.ggg.hhh
-```
+      ```
       where aaa.bbb.ccc.ddd is a DESIRED IP, and the eee.fff.ggg.hhh is the IP address of Your gateway (usually router IP). They are supposed to be in the same network.
    4. edit DNS servers if needed: `sudo nano /etc/systemd/resolved.conf` - the line with "DNS=" is probably uncommented
    5. disable NetworkManager as it will interfere: `sudo systemctl disable NetworkManager`
