@@ -37,7 +37,7 @@ How did I overcome at least part of those issues (for reference, I use Luckfox P
       where aaa.bbb.ccc.ddd is a DESIRED IP, and the eee.fff.ggg.hhh is the IP address of Your gateway (usually router IP). They are supposed to be in the same network.
    4. edit DNS servers if needed: `sudo nano /etc/systemd/resolved.conf` - the line with "DNS=" is probably uncommented
    5. disable NetworkManager as it will interfere: `sudo systemctl disable NetworkManager`
-   6. install necessary packages and then reboot: `sudo apt update && sudo apt install -y wireguard iptables mc && reboot`
+   6. install necessary packages and then reboot: `sudo apt update && sudo apt install -y wireguard iptables resolvconf mc && reboot`
 6. from Your PC/laptop connect via SFTP in MC to the board and transfer there the modules compiled for this kernel - ".ko" ones from the folder `output/out/sysdrv_out/kernel_drv_ko/` in the luckfox-pico project directory
 7. create the directory on luckfox "/ko": `sudo mkdir /ko` and move those files to that directory.
 8. copy the 'insert_modules.sh' from this repo to the `/usr/local/sbin/` directory and adjust it according to the modules from there. The order is crucial. If errors happen when running insmod - `dmesg | tail` might help to udnerstand what is going on - e.g. "bla-bla is missing" - look for that .ko module and insmod it before Your one which shows an error etc.
