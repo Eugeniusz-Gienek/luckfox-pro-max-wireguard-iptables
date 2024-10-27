@@ -8,19 +8,20 @@ Problematics
 
 How did I overcome at least part of those issues (for reference, I use Luckfox Pico Pro Max with Ubuntu installed on 8Gb microsd card, or how they call it - TF card) - step by step.
 1. Get their "SDK"( https://github.com/LuckfoxTECH/luckfox-pico ) and compile it:
-   1. `git clone https://github.com/LuckfoxTECH/luckfox-pico.git`
-   2. `cd luckfox-pico`
-   3. `sudo ./build.sh lunch` (yup - not lAunch, but lunch - someone was pretty hungry there).
-   4. Select `[5] RV1106_Luckfox_Pico_Max`
-   5. edited kernel by the command `./build.sh kernelconfig` (You may use my kernel file 'luckfox_rv1106_linux_defconfig' and put it in here: `sysdrv/source/kernel/arch/arm/configs/luckfox_rv1106_linux_defconfig`
-   6. `sudo ./build.sh`
-   7. `cd output/image`
-   8. `sudo -s`
-   9. as mentioned on the manual page https://wiki.luckfox.com/Luckfox-Pico/Luckfox-Pico-RV1106/Luckfox-Pico-Pro-Max/Linux-MacOS-Burn-Image   - in the section "TF Card Image Flashing" download the file and unpack it: `wget https://files.luckfox.com/wiki/Luckfox-Pico/Software/blkenvflash.zip && unzip blkenvflash.zip`
-   10. `chmod 755 blkenvflash`
-   11. `chmod a+X blkenvflash`
-   12. insert the microsd card in the reader and run this script to burn the firmware to microsd: `sudo ./blkenvflash /dev/mmcblk0` - where `/dev/mmcblk0` is a microsd card. The easiest way to find which device it is is to check dmesg: `dmesg | tail`; Also, make sure BEFORE running the firmware that Your microsd card doesn't have any partitions and if by accident Your OS didn't mount them. If so, unmount and run fdisk where remove all partitions - the easiest way possible.
-   13. insert microsd card to the Luckfox Pico Pro Max and wait a minute
+   1. install dependencies - in Ubuntu it probably should be like they mentioned: `sudo apt-get install -y git ssh make gcc gcc-multilib g++-multilib module-assistant expect g++ gawk texinfo libssl-dev bison flex fakeroot cmake unzip gperf autoconf device-tree-compiler libncurses5-dev pkg-config bc python-is-python3 passwd openssl openssh-server openssh-client vim file cpio rsync` - however I use Gentoo so can't check if that is the case. Anyways, it is all about building a cross-compiler.
+   2. `git clone https://github.com/LuckfoxTECH/luckfox-pico.git`
+   3. `cd luckfox-pico`
+   4. `sudo ./build.sh lunch` (yup - not lAunch, but lunch - someone was pretty hungry there).
+   5. Select `[5] RV1106_Luckfox_Pico_Max`
+   6. edited kernel by the command `./build.sh kernelconfig` (You may use my kernel file 'luckfox_rv1106_linux_defconfig' and put it in here: `sysdrv/source/kernel/arch/arm/configs/luckfox_rv1106_linux_defconfig`
+   7. `sudo ./build.sh`
+   8. `cd output/image`
+   9. `sudo -s`
+   10. as mentioned on the manual page https://wiki.luckfox.com/Luckfox-Pico/Luckfox-Pico-RV1106/Luckfox-Pico-Pro-Max/Linux-MacOS-Burn-Image   - in the section "TF Card Image Flashing" download the file and unpack it: `wget https://files.luckfox.com/wiki/Luckfox-Pico/Software/blkenvflash.zip && unzip blkenvflash.zip`
+   11. `chmod 755 blkenvflash`
+   12. `chmod a+X blkenvflash`
+   13. insert the microsd card in the reader and run this script to burn the firmware to microsd: `sudo ./blkenvflash /dev/mmcblk0` - where `/dev/mmcblk0` is a microsd card. The easiest way to find which device it is is to check dmesg: `dmesg | tail`; Also, make sure BEFORE running the firmware that Your microsd card doesn't have any partitions and if by accident Your OS didn't mount them. If so, unmount and run fdisk where remove all partitions - the easiest way possible.
+   14. insert microsd card to the Luckfox Pico Pro Max and wait a minute
 2. check on Your router / dns server / pihole / whatever which IP is assigned to the luckfox board.
 3. `ssh pico@aaa.bbb.ccc.ddd`, where aaa.bbb.ccc.ddd is the IP adress from the previous step
 4. password is "luckfox"
