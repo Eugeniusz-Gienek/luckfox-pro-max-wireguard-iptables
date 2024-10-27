@@ -1,4 +1,4 @@
-# luckfox-pro-max-wireguard-iptables
+# Luckfox Pro Max with Wireguards and IPtables
 Luckfox Pico Pro Max board - how to make it run Wireguard and iptables
 
 Problematics
