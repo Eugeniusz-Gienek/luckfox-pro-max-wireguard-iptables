@@ -1,3 +1,7 @@
+Update - this board is obsolete as the producent of the board ignores even the basics of support - thus this instruction is useful for historical reasons only.
+
+---
+
 # Luckfox Pro Max with Wireguards and IPtables
 Luckfox Pico Pro Max board - how to make it run Wireguard and iptables
 
